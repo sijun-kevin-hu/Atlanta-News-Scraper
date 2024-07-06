@@ -7,3 +7,6 @@ app = Flask(__name__)
 def index():
     headlines = scrape()
     return render_template('index.html', headlines=headlines)
+
+if __name__ == '__main__':
+    app.run(debug=True)

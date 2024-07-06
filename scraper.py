@@ -23,17 +23,19 @@ def scrape():
 
     headline_title = soup.find_all('h3', class_='title')
     headline_text = soup.find_all('p', class_='dek')
-    headline_url = soup.find_all('a', class_='m')
+    headline_url = soup.find_all(class_='m')
 
     headlines = []
 
     for i in range(len(headline_text)):
-        headline = f"Headline {i+1}: {headline_title[i].get_text().strip()}\n{headline_text[i].get_text().strip()}"
-        headlines.append(headline)
-
-    for headline in headlines:
-        print(headline)
-        print()
+        a = headline_url[i].find('a')
+        link = a['href']
+        headlines.append({
+            'title': headline_title[i].get_text(),
+            'text': headline_text[i].get_text(),
+            'link': link
+        })
+        print(link)
 
     request.close()
 

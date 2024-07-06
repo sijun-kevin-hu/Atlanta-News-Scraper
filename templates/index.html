@@ -7,5 +7,16 @@
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    
+    <main>
+        <h1>Atlanta Headlines Today!</h1>
+        <ul class="headlines">
+            {% for headline in headlines %}
+            <li class="headline">
+                <h2>{{headline.title}}</h2>
+                <p>{{headline.text}}</p>
+                <a href="https://www.fox5atlanta.com{{headline.link}}">Link Here</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
